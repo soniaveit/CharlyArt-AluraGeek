@@ -20,6 +20,11 @@ app.get('/api/db', (req, res) => {
     });
   });
 
+  // Servir index.html desde la raíz
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+  });
+  
 // Manejo de rutas inexistentes
 app.use((req, res, next) => {
   res.status(404).send('Página no encontrada');
