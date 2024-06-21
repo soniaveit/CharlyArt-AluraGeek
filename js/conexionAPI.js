@@ -1,5 +1,5 @@
 //URL del proyecto desplegado en VERCEL
-const apiURL="https://charly-art-alura-geek.vercel.app/cuadros";
+const apiURL="https://charly-geek.vercel.app//cuadros";
 
 async function listarCuadros(){
     const conexion= await fetch(apiURL);
