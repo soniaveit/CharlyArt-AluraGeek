@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, '../public')));
 
-// Ruta de ejemplo
+// Ruta para servir db.json
 app.get('/api/db', (req, res) => {
     const dbPath = path.join(__dirname, 'db.json');
     fs.readFile(dbPath, 'utf8', (err, data) => {
@@ -29,6 +29,6 @@ app.use((req, res, next) => {
 app.listen(port, () => {
     console.log(`Servidor iniciado en http://localhost:${port}`);
   });
-  
+
 // Exporta la aplicación
 module.exports = app;
