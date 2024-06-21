@@ -1,5 +1,8 @@
+//URL del proyecto desplegado en VERCEL
+const apiURL="https://charly-art-alura-geek.vercel.app/cuadros";
+
 async function listarCuadros(){
-    const conexion= await fetch("http://localhost:3001/cuadros");
+    const conexion= await fetch(apiURL);
     const conexionConvertida=conexion.json();
     //console.log(conexionConvertida);
 
@@ -9,7 +12,7 @@ async function listarCuadros(){
 //Aquí debemos indicar el método y qué tipo de archivo se estará enviando
 //eso en headers, y en body, el cuerpo del mensaje
 async function enviarCuadro(titulo, tecnica, imagen){
-    const conexion = await fetch("http://localhost:3001/cuadros",{
+    const conexion = await fetch(apiURL,{
         method: "POST",
         headers:{"Content-type":"application/json"},
         body:JSON.stringify({
@@ -25,7 +28,7 @@ async function enviarCuadro(titulo, tecnica, imagen){
 
 const borrarCuadro = async (id) => {
     try{
-        const res= await fetch(`http://localhost:3001/cuadros/${id}`,{
+        const res= await fetch(`${apiURL}/${id}`,{
             method: "DELETE"
         });
         return await res.json();
@@ -33,18 +36,9 @@ const borrarCuadro = async (id) => {
         return console.log(err);
     }
 }
-/*async function borrarCuadro(id){
-    return await fetch(`http://localhost:3001/cuadros/${id}`,{
-        method: "DELETE"
-    })
-    .then(res => res.json())
-    .catch((err) => console.log(err));
-};*/
 
 export const conexionApi={
     listarCuadros,
     enviarCuadro,
     borrarCuadro
 }
-
-//listarCuadros();
